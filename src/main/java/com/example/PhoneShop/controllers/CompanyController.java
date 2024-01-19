@@ -2,6 +2,7 @@ package com.example.PhoneShop.controllers;
 
 import com.example.PhoneShop.models.Company;
 import com.example.PhoneShop.repository.CompanyRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/company")
+@Slf4j
 public class CompanyController {
 
     private CompanyRepository companyRepository;
@@ -25,9 +27,11 @@ public class CompanyController {
 
     @GetMapping("/{id}")
     public String getCompany(@PathVariable("id") Long id, Model model) {
+        log.info("Get company with id=" + id);
         Optional<Company> company = companyRepository.findById(id);
 
         if (company.isEmpty()) {
+            log.info("There is no company with id=" + id);
             return "error/404";
         }
         model.addAttribute("company", company.get());
