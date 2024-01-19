@@ -4,7 +4,7 @@
 ## Build
 Создаём базы данных
 ```
-CREATE DATABASE PhoneShop;
+CREATE DATABASE phone_shop;
 ```
 
 Запустить скрипт `./sql/create_table.sql`
