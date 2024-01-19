@@ -7,8 +7,10 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
+
 /**
- * Класс компания. Свойства: <b>id</b>, <b>name</b>.
+ * Класс компания. Свойства: <b>id</b>, <b>title</b>.
  * @author Коннов Михаил
  */
 @Entity
@@ -24,5 +26,10 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String surname;
+    private String title;
+
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @OneToMany(mappedBy = "company")
+    private List<Phone> phones;
 }
