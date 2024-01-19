@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
 
+/**
+ * Контроллер для класса {@link Company}.
+ * @author Коннов Михаил
+ */
 @Controller
 @RequestMapping("/company")
 @Slf4j
