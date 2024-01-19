@@ -1,5 +1,5 @@
-DROP TABLE IF EXISTS company;
-DROP TABLE IF EXISTS phone;
+DROP TABLE IF EXISTS company CASCADE;
+DROP TABLE IF EXISTS phone CASCADE;
 
 
 CREATE TABLE company(
@@ -12,7 +12,7 @@ CREATE TABLE company(
 CREATE TABLE phone(
 	id bigserial,
 	name varchar(256) not null,
-	description varchar(256),
+	description text,
 	company_id bigserial NOT NULL REFERENCES company(id),
 	primary key(id)
 );
