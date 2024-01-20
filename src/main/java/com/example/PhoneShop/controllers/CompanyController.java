@@ -86,4 +86,38 @@ public class CompanyController {
         return "redirect:/company";
     }
 
+    @GetMapping("/update/{id}")
+    public String updateGet(@RequestParam(value = "titleExist", required = false) String titleExist,
+                            @ModelAttribute("company") Company company, @PathVariable("id") Long id,
+                            Model model) {
+        model.addAttribute("titleExist", titleExist != null);
+        if (company.getTitle() == null) {
+            company = companyService.getCompanyById(id);
+            model.addAttribute("company", company);
+        }
+
+
+        return "company/update";
+    }
+
+
+    @PostMapping("/update/{id}")
+    public String updatePost(@ModelAttribute("company") @Valid Company company, BindingResult bindingResult,
+                             @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            return "company/update";
+        }
+
+        if (companyService.getCompanyByTitle(company.getTitle()) != null) {
+            redirectAttributes.addFlashAttribute("company", company);
+            log.info("Company with this title exist. Phone to redirect = " + company);
+            return "redirect:/company/update/" + id + "?titleExist";
+        }
+
+        companyService.saveCompany(company);
+
+        return "redirect:/company";
+    }
+
 }
