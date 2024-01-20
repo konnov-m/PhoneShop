@@ -44,6 +44,7 @@ public class CompanyController {
 
     @GetMapping("/")
     public String getAll(Model model) {
+        log.info("Get all companies");
         Iterable<Company> companies = companyRepository.findAll();
 
         model.addAttribute("companies", companies);

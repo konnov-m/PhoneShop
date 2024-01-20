@@ -43,6 +43,7 @@ public class PhoneController {
 
     @GetMapping("/")
     public String getAll(Model model) {
+        log.info("Get all phones");
         Iterable<Phone> phones = phoneRepository.findAll();
 
         model.addAttribute("phones", phones);
