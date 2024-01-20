@@ -8,7 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
-
+/**
+ * <p>Сервис по работе с {@link Phone}.<p/>
+ * <br>Удаление {@link PhoneService#deletePhoneById(Long)} (Long)}</br>
+ * <br>Получить экземпляр {@link PhoneService#getPhoneById(Long)} (Long)} (Long)}</br>
+ * <br>Получить все экземпляры {@link PhoneService#getAllPhones()} (Long)} (Long)}</br>
+ */
 @Service
 @Slf4j
 public class PhoneService {

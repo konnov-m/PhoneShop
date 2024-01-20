@@ -9,6 +9,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+
+/**
+ * <p>Сервис по работе с {@link Company}.<p/>
+ * <br>Удаление {@link CompanyService#deleteCompanyById(Long)}</br>
+ * <br>Получить экземпляр {@link CompanyService#getCompanyById(Long)} (Long)}</br>
+ * <br>Получить все экземпляры {@link CompanyService#getAllCompanies()} (Long)} (Long)}</br>
+ */
 @Service
 @Slf4j
 public class CompanyService {
