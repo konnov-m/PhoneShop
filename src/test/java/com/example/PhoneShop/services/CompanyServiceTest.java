@@ -91,5 +91,34 @@ class CompanyServiceTest {
         Assertions.assertNotEquals(company, companyRepository.findByTitle("Google").orElse(null));
     }
 
+    @Test
+    void getGoogle() {
+        String title = "Google";
+
+        Company companyRep = companyRepository.findByTitle(title).orElse(null);
+        Company companySer = companyService.getCompanyByTitle(title);
+        Assertions.assertEquals(companyRep, companySer);
+    }
+
+    @Test
+    void getApple() {
+        String title = "Apple";
+
+        Company companyRep = companyRepository.findByTitle(title).orElse(null);
+        Company companySer = companyService.getCompanyByTitle(title);
+        Assertions.assertEquals(companyRep, companySer);
+    }
+
+    // There is no "Nothing" in db
+    @Test
+    void getNothing() {
+        String title = "Nothing";
+
+        Company companyRep = companyRepository.findByTitle(title).orElse(null);
+        Company companySer = companyService.getCompanyByTitle(title);
+        Assertions.assertEquals(companyRep, companySer);
+        Assertions.assertNull(companyRep);
+    }
+
 
 }
