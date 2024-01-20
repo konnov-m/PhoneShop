@@ -42,7 +42,7 @@ public class CompanyController {
         return "company/get";
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public String getAll(Model model) {
         log.info("Get all companies");
         Iterable<Company> companies = companyRepository.findAll();

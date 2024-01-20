@@ -41,7 +41,7 @@ public class PhoneController {
         return "phone/get";
     }
 
-    @GetMapping("/")
+    @GetMapping({"", "/"})
     public String getAll(Model model) {
         log.info("Get all phones");
         Iterable<Phone> phones = phoneRepository.findAll();
