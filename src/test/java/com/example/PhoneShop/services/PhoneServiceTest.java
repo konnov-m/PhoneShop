@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 class PhoneServiceTest {
@@ -54,9 +56,9 @@ class PhoneServiceTest {
 
         Phone savedPhone = phoneRepository.findByName(name).get();
 
-        Assertions.assertEquals(savedPhone.getName(), phone.getName());
-        Assertions.assertEquals(savedPhone.getCompany(), phone.getCompany());
-        Assertions.assertEquals(savedPhone.getDescription(), phone.getDescription());
+        assertEquals(savedPhone.getName(), phone.getName());
+        assertEquals(savedPhone.getCompany(), phone.getCompany());
+        assertEquals(savedPhone.getDescription(), phone.getDescription());
     }
 
     @Test
@@ -75,9 +77,9 @@ class PhoneServiceTest {
 
         Phone savedPhone = phoneRepository.findByName(name).get();
 
-        Assertions.assertNotEquals(savedPhone.getName(), name.toLowerCase()); // Lower case
-        Assertions.assertEquals(savedPhone.getCompany(), phone.getCompany());
-        Assertions.assertEquals(savedPhone.getDescription(), phone.getDescription());
+        assertNotEquals(savedPhone.getName(), name.toLowerCase()); // Lower case
+        assertEquals(savedPhone.getCompany(), phone.getCompany());
+        assertEquals(savedPhone.getDescription(), phone.getDescription());
     }
 
     @Test
@@ -101,7 +103,7 @@ class PhoneServiceTest {
         phoneService.savePhone(phone);
 
 
-        Assertions.assertEquals(phoneRepository.findByName("Pixel 8").get().getCompany(), company);
+        assertEquals(phoneRepository.findByName("Pixel 8").get().getCompany(), company);
 
     }
 
@@ -115,7 +117,7 @@ class PhoneServiceTest {
         phoneService.savePhone(phone);
 
 
-        Assertions.assertEquals(phoneRepository.findByName("Pixel 8").get().getDescription(), description);
+        assertEquals(phoneRepository.findByName("Pixel 8").get().getDescription(), description);
 
     }
 
@@ -129,7 +131,7 @@ class PhoneServiceTest {
         phoneService.savePhone(phone);
 
 
-        Assertions.assertEquals(phoneRepository.findByName("Pixel 7").get().getName(), name);
+        assertEquals(phoneRepository.findByName("Pixel 7").get().getName(), name);
 
     }
 }

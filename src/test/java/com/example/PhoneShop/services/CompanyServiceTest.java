@@ -3,12 +3,13 @@ package com.example.PhoneShop.services;
 import com.example.PhoneShop.models.Company;
 import com.example.PhoneShop.repository.CompanyRepository;
 import com.example.PhoneShop.repository.PhoneRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
@@ -43,7 +44,7 @@ class CompanyServiceTest {
 
         Company savedCompany = companyRepository.findByTitle(company.getTitle()).orElse(null);
 
-        Assertions.assertEquals(savedCompany.getTitle(), company.getTitle());
+        assertEquals(savedCompany.getTitle(), company.getTitle());
     }
 
     @Test
@@ -56,7 +57,7 @@ class CompanyServiceTest {
 
         Company savedCompany = companyRepository.findByTitle(company.getTitle()).orElse(null);
 
-        Assertions.assertNotEquals("nothing", company.getTitle());
+        assertNotEquals("nothing", company.getTitle());
     }
 
 
@@ -66,7 +67,7 @@ class CompanyServiceTest {
 
         companyService.deleteCompanyById(savedCompany.getId());
 
-        Assertions.assertFalse(companyRepository.findById(savedCompany.getId()).isPresent());
+        assertFalse(companyRepository.findById(savedCompany.getId()).isPresent());
     }
 
     @Test
@@ -77,7 +78,7 @@ class CompanyServiceTest {
 
         companyService.saveCompany(company);
 
-        Assertions.assertEquals(company, companyRepository.findByTitle("google").orElse(null));
+        assertEquals(company, companyRepository.findByTitle("google").orElse(null));
     }
 
     @Test
@@ -88,7 +89,7 @@ class CompanyServiceTest {
 
         companyService.saveCompany(company);
 
-        Assertions.assertNotEquals(company, companyRepository.findByTitle("Google").orElse(null));
+        assertNotEquals(company, companyRepository.findByTitle("Google").orElse(null));
     }
 
     @Test
@@ -97,7 +98,7 @@ class CompanyServiceTest {
 
         Company companyRep = companyRepository.findByTitle(title).orElse(null);
         Company companySer = companyService.getCompanyByTitle(title);
-        Assertions.assertEquals(companyRep, companySer);
+        assertEquals(companyRep, companySer);
     }
 
     @Test
@@ -106,7 +107,7 @@ class CompanyServiceTest {
 
         Company companyRep = companyRepository.findByTitle(title).orElse(null);
         Company companySer = companyService.getCompanyByTitle(title);
-        Assertions.assertEquals(companyRep, companySer);
+        assertEquals(companyRep, companySer);
     }
 
     // There is no "Nothing" in db
@@ -116,8 +117,8 @@ class CompanyServiceTest {
 
         Company companyRep = companyRepository.findByTitle(title).orElse(null);
         Company companySer = companyService.getCompanyByTitle(title);
-        Assertions.assertEquals(companyRep, companySer);
-        Assertions.assertNull(companyRep);
+        assertEquals(companyRep, companySer);
+        assertNull(companyRep);
     }
 
 
