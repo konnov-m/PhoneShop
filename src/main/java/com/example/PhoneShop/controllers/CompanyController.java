@@ -16,6 +16,14 @@ import java.util.Objects;
 /**
  * Контроллер для класса {@link Company}.
  * @author Коннов Михаил
+ *
+ * <br>Получение страницы-просмотр с экземпляром {@link CompanyController#getCompany}</br>
+ * <br>Получение страницы-просмотр со всеми экземплярами {@link CompanyController#getAll}</br>
+ * <br>Получение страницы с удалением экземпляра {@link CompanyController#delete}</br>
+ * <br>Получение страницы с созданием экземпляра {@link CompanyController#createGet} и
+ *  приём POST запроса {@link CompanyController#createPost}</br>
+ * <br>Получение страницы с обновлением экземпляра {@link CompanyController#updateGet} и
+ *  приём POST запроса {@link CompanyController#updatePost}</br>
  */
 @Controller
 @RequestMapping("/company")

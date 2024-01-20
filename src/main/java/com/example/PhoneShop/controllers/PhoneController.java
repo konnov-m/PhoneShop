@@ -14,13 +14,20 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * Контроллер для класса {@link Phone}.
- * @author Коннов Михаил
+ * <p>@author Коннов Михаил</p>
+ *
+ * <br>Получение страницы-просмотр с экземпляром {@link PhoneController#getPhone}</br>
+ * <br>Получение страницы-просмотр со всеми экземплярами {@link PhoneController#getAll}</br>
+ * <br>Получение страницы с удалением экземпляра {@link PhoneController#delete}</br>
+ * <br>Получение страницы с созданием экземпляра {@link PhoneController#createGet} и
+ *  приём POST запроса {@link PhoneController#createPost}</br>
+ * <br>Получение страницы с обновлением экземпляра {@link PhoneController#updateGet} и
+ *  приём POST запроса {@link PhoneController#updatePost}</br>
  */
 @Controller
 @RequestMapping("/phone")

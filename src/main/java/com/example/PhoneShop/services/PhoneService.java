@@ -11,8 +11,9 @@ import java.util.Optional;
 /**
  * <p>Сервис по работе с {@link Phone}.<p/>
  * <br>Удаление {@link PhoneService#deletePhoneById(Long)} (Long)}</br>
- * <br>Получить экземпляр {@link PhoneService#getPhoneById(Long)} (Long)} (Long)}</br>
- * <br>Получить все экземпляры {@link PhoneService#getAllPhones()} (Long)} (Long)}</br>
+ * <br>Получить экземпляр {@link PhoneService#getPhoneById(Long)}</br>
+ * <br>Получить все экземпляры {@link PhoneService#getAllPhones()}</br>
+ * <br>Получить экземпляр по {@link Phone#getName()}. Функция {@link PhoneService#getPhoneByName(String)}</br>
  */
 @Service
 @Slf4j
