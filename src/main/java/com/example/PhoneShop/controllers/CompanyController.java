@@ -2,10 +2,12 @@ package com.example.PhoneShop.controllers;
 
 import com.example.PhoneShop.models.Company;
 import com.example.PhoneShop.services.CompanyService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -51,6 +53,31 @@ public class CompanyController {
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         companyService.deleteCompanyById(id);
+
+        return "redirect:/company";
+    }
+
+    @GetMapping("/create")
+    public String createGet(@RequestParam(value = "titleExist", required = false) String titleExist,
+            @ModelAttribute("company") Company company,
+            Model model) {
+        model.addAttribute("titleExist", titleExist != null);
+
+        return "company/create";
+    }
+
+    @PostMapping("/create")
+    public String createPost(@ModelAttribute("company") @Valid Company company, BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "/create";
+        }
+
+        if (companyService.getCompanyByTitle(company.getTitle()) != null) {
+            return "redirect:/company/create?titleExist";
+        }
+
+        companyService.saveCompany(company);
 
         return "redirect:/company";
     }

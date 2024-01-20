@@ -59,4 +59,14 @@ public class CompanyService {
         return companyRepository.findAll();
     }
 
+    public Company getCompanyByTitle(String title) {
+        Optional<Company> company = companyRepository.findByTitle(title);
+
+        return company.orElse(null);
+    }
+
+    public void saveCompany(Company company) {
+        companyRepository.save(company);
+    }
+
 }

@@ -16,12 +16,26 @@
 <body>
 
     <div class="container">
-        <div class="row">
-            <div th:if="${companies != null}" th:each="company : ${companies}" class="card" style="width: 18rem;">
-                <img src="https://i.pinimg.com/564x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 th:text="${company.title}" class="card-title">Заголовок карточки</h5>
-                    <a th:href="@{/company/{id}(id=${company.id})}" class="btn btn-primary">Перейти к компании</a>
+        <div class="mb-3 mt-3">
+            <a th:href="@{/company/create}">
+                <button type="button" class="btn btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"></path>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"></path>
+                    </svg>
+                    Create
+                </button>
+            </a>
+        </div>
+
+        <div class="mb-3">
+            <div class="row">
+                <div th:if="${companies != null}" th:each="company : ${companies}" class="card" style="width: 18rem;">
+                    <img src="https://i.pinimg.com/564x/73/b6/6d/73b66d9790c99f0bb027f5197e94870b.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 th:text="${company.title}" class="card-title">Заголовок карточки</h5>
+                        <a th:href="@{/company/{id}(id=${company.id})}" class="btn btn-primary">Перейти к компании</a>
+                    </div>
                 </div>
             </div>
         </div>
