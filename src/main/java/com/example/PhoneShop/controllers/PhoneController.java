@@ -1,15 +1,16 @@
 package com.example.PhoneShop.controllers;
 
 import com.example.PhoneShop.models.Phone;
+import com.example.PhoneShop.services.CompanyService;
 import com.example.PhoneShop.services.PhoneService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Контроллер для класса {@link Phone}.
@@ -22,9 +23,16 @@ public class PhoneController {
 
     private PhoneService phoneService;
 
+    private CompanyService companyService;
+
     @Autowired
     public void setPhoneService(PhoneService phoneService) {
         this.phoneService = phoneService;
+    }
+
+    @Autowired
+    public void setCompanyService(CompanyService companyService) {
+        this.companyService = companyService;
     }
 
     @GetMapping("/{id}")
@@ -54,6 +62,39 @@ public class PhoneController {
     @PostMapping("/delete/{id}")
     public String delete(@PathVariable("id") Long id) {
         phoneService.deletePhoneById(id);
+
+        return "redirect:/phone";
+    }
+
+    @GetMapping("/create")
+    public String createGet(@RequestParam(value = "nameExist", required = false) String nameExist,
+                            @ModelAttribute("phone") Phone phone, Model model) {
+        log.info("createGet(). Get phone = " + phone);
+
+        model.addAttribute("companies", companyService.getAllCompanies());
+        model.addAttribute("nameExist", nameExist != null);
+
+        return "phone/create";
+    }
+
+
+    @PostMapping("/create")
+    public String createPost(@ModelAttribute("phone") @Valid Phone phone,
+                             BindingResult bindingResult,
+                             RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            log.info("bindingResult.hasErrors(). Phone to redirect = " + phone);
+            return "phone/create";
+        }
+
+        if (phoneService.getPhoneByName(phone.getName()) != null) {
+            redirectAttributes.addFlashAttribute("phone", phone);
+            log.info("Phone with this name exist. Phone to redirect = " + phone);
+            return "redirect:/phone/create?nameExist";
+        }
+
+        phoneService.savePhone(phone);
 
         return "redirect:/phone";
     }

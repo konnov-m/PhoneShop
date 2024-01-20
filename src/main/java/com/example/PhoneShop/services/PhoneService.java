@@ -39,4 +39,14 @@ public class PhoneService {
         return phoneRepository.findAll();
     }
 
+    public Phone getPhoneByName(String name) {
+        Optional<Phone> phone = phoneRepository.findByName(name);
+
+        return phone.orElse(null);
+    }
+
+    public void savePhone(Phone phone) {
+        phoneRepository.save(phone);
+    }
+
 }
