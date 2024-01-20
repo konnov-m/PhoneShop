@@ -29,7 +29,7 @@ public class PhoneController {
     }
 
     @GetMapping("/{id}")
-    public String getCompany(@PathVariable("id") Long id, Model model) {
+    public String getPhone(@PathVariable("id") Long id, Model model) {
         log.info("Get phone with id=" + id);
         Optional<Phone> phone = phoneRepository.findById(id);
 
@@ -39,6 +39,15 @@ public class PhoneController {
         }
         model.addAttribute("phone", phone.get());
         return "phone/get";
+    }
+
+    @GetMapping("/")
+    public String getAll(Model model) {
+        Iterable<Phone> phones = phoneRepository.findAll();
+
+        model.addAttribute("phones", phones);
+
+        return "phone/getAll";
     }
 
 }
