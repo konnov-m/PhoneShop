@@ -11,6 +11,9 @@ CREATE DATABASE phone_shop;
 
 В [application.properties](src%2Fmain%2Fresources%2Fapplication.properties) задаём 
 параметр `server.port`, можно оставить по стандарту.
+И также задаём параметры базы данных `spring.datasource.username` и 
+`spring.datasource.password`. И порт, если он не стандартный, 
+`spring.datasource.url`.
 
 Собираем jar
 ```
