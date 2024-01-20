@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Objects;
+
 /**
  * Контроллер для класса {@link Company}.
  * @author Коннов Михаил
@@ -109,7 +111,9 @@ public class CompanyController {
             return "company/update";
         }
 
-        if (companyService.getCompanyByTitle(company.getTitle()) != null) {
+        Company companyTitle = companyService.getCompanyByTitle(company.getTitle());
+
+        if (companyTitle != null && Objects.equals(companyTitle.getId(), company.getId())) {
             redirectAttributes.addFlashAttribute("company", company);
             log.info("Company with this title exist. Phone to redirect = " + company);
             return "redirect:/company/update/" + id + "?titleExist";
