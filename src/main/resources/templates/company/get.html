@@ -18,7 +18,15 @@
     <div class="container">
         <h5 th:text="*{company.title}"></h5>
 
+        <form th:action="@{/company/delete/{id}(id=${company.id})}" th:method="POST">
+            <div class="mb-3">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
     </div>
+
+
+
 
 </body>
 </html>

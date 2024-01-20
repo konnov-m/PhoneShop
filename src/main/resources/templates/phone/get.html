@@ -18,6 +18,13 @@
     <div class="container">
         <h5 th:text="*{phone.company.title} + ' ' + *{phone.name}"></h5>
         <div th:text="'Description: ' + *{phone.description}"></div>
+
+        <form th:action="@{/phone/delete/{id}(id=${phone.id})}" th:method="POST">
+            <div class="mb-3">
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+
     </div>
 
 </body>
