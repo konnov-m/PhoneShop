@@ -13,7 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
@@ -127,7 +127,7 @@ public class PhoneController {
         }
 
         Iterable<Company> it = companyService.getAllCompanies();
-        List<Company> companies = new ArrayList<>();
+        List<Company> companies = new LinkedList<>();
 
         it.forEach(companies::add);
         companies.remove(phone.getCompany());

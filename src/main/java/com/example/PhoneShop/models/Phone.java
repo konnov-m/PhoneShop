@@ -38,4 +38,13 @@ public class Phone {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "company_id", referencedColumnName = "id")
     private Company company;
+
+    /**
+     * Поле экран телефона {@link Display}
+     */
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "display_id", referencedColumnName = "id")
+    private Display display;
 }

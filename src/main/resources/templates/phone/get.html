@@ -19,6 +19,36 @@
         <h5 th:text="*{phone.company.title} + ' ' + *{phone.name}"></h5>
         <div th:text="'Description: ' + *{phone.description}"></div>
 
+        <h6 class="mb-3">Характеристики</h6>
+        <div class="mb-3">
+            <div class="row g-2">
+                <div class="col-6">
+                    <div class="p-3 border bg-light" >Диагональ экрана (Дюйм)</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light" th:text="${phone.display.diagonal}">Custom column padding</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light">Разрешение</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light" th:text="${phone.display.resolution}">Custom column padding</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light">Тип матрицы</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light" th:text="${phone.display.typeMatrix}">Custom column padding</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light">Частота обновления экрана (Гц)</div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3 border bg-light" th:text="${phone.display.rate}">Custom column padding</div>
+                </div>
+            </div>
+        </div>
+
         <form th:action="@{/phone/delete/{id}(id=${phone.id})}" th:method="POST">
             <div class="mb-3">
                 <button type="submit" class="btn btn-danger">Delete</button>
