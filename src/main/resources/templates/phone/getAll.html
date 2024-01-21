@@ -39,7 +39,7 @@
 
                 <div class="mb-3 mt-3">
                     <select class="form-select form-select-sm" id="rate" name="rate" aria-label=".form-select-sm example">
-                        <option th:value="${null}" selected>All company</option>
+                        <option th:value="${null}" selected>All rates</option>
                         <div th:if="${rate != null}" th:each="rate : ${rates}" class="card" style="width: 18rem;">
                             <option th:value="${rate}" th:text="${rate}"></option>
                         </div>
