@@ -1,8 +1,10 @@
 package com.example.PhoneShop.controllers;
 
 import com.example.PhoneShop.models.Company;
+import com.example.PhoneShop.models.Display;
 import com.example.PhoneShop.models.Phone;
 import com.example.PhoneShop.services.CompanyService;
+import com.example.PhoneShop.services.DisplayService;
 import com.example.PhoneShop.services.PhoneService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +40,8 @@ public class PhoneController {
 
     private CompanyService companyService;
 
+    private DisplayService displayService;
+
     @Autowired
     public void setPhoneService(PhoneService phoneService) {
         this.phoneService = phoneService;
@@ -46,6 +50,11 @@ public class PhoneController {
     @Autowired
     public void setCompanyService(CompanyService companyService) {
         this.companyService = companyService;
+    }
+
+    @Autowired
+    public void setDisplayService(DisplayService displayService) {
+        this.displayService = displayService;
     }
 
     @GetMapping("/{id}")
@@ -85,6 +94,7 @@ public class PhoneController {
         log.info("createGet(). Get phone = " + phone);
 
         model.addAttribute("companies", companyService.getAllCompanies());
+        model.addAttribute("displays", displayService.getAllDisplays());
         model.addAttribute("nameExist", nameExist != null);
 
         return "phone/create";
@@ -132,9 +142,16 @@ public class PhoneController {
         it.forEach(companies::add);
         companies.remove(phone.getCompany());
 
+        Iterable<Display> displayesIterable = displayService.getAllDisplays();
+        List<Display> displays = new LinkedList<>();
+
+        displayesIterable.forEach(displays::add);
+        displays.remove(phone.getDisplay());
+
 
         model.addAttribute("phone", phone);
         model.addAttribute("companies", companies);
+        model.addAttribute("displays", displays);
         model.addAttribute("nameExist", nameExist != null);
 
         return "phone/update";

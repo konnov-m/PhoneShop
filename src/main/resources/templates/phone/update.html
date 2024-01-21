@@ -48,6 +48,15 @@
                     </select>
                 </div>
 
+                <div class="mb-3">
+                    <select class="form-select form-select-sm" th:field="*{display}" aria-label=".form-select-sm example">
+                        <option th:value="*{display.id}" th:text="*{display.name}" selected>Selected display</option>
+                        <div th:if="${display != null}" th:each="display : ${displays}" class="card" style="width: 18rem;">
+                            <option th:value="${display.id}" th:text="${display.name}"></option>
+                        </div>
+                    </select>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Update</button>
 
             </div>
