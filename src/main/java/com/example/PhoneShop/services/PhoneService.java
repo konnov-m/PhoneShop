@@ -1,6 +1,5 @@
 package com.example.PhoneShop.services;
 
-import com.example.PhoneShop.models.Company;
 import com.example.PhoneShop.models.Display;
 import com.example.PhoneShop.models.Phone;
 import com.example.PhoneShop.repository.PhoneRepository;
@@ -20,7 +19,6 @@ import java.util.Optional;
  * <br>Получить экземпляр по {@link Phone#getName()}. Функция {@link PhoneService#getPhoneByName(String)}</br>
  * <br>Сохранить {@link PhoneService#savePhone(Phone)}</br>
  * <br>Получить по {@link Display#getTypeMatrix()}. Функция {@link PhoneService#getByTypeMatrix(String)}</br>
- * <br>Получить список по {@link Company#getTitle()}. Функция {@link PhoneService#getByCompanyTitle}</br>
  * <br>Получить список по {@link Display#getRate()}. Функция {@link PhoneService#getByDisplayRate}</br>
  */
 @Service
@@ -60,10 +58,6 @@ public class PhoneService {
 
     public Iterable<Phone> getByTypeMatrix(String typeMatrix) {
         return phoneRepository.findByDisplay_TypeMatrix(typeMatrix);
-    }
-
-    public Iterable<Phone> getByCompanyTitle(String title) {
-        return phoneRepository.findByCompany_Title(title);
     }
 
     /**
