@@ -47,6 +47,13 @@
                     <div class="p-3 border bg-light" th:text="${phone.display.rate}">Custom column padding</div>
                 </div>
             </div>
+
+            <div class="mb-3">
+                <a th:href="@{/display/update/{id}(id=${phone.display.id})}">
+                    <button type="submit" class="btn btn-info">Редактировать дисплей</button>
+                </a>
+            </div>
+
         </div>
 
         <form th:action="@{/phone/delete/{id}(id=${phone.id})}" th:method="POST">

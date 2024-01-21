@@ -51,7 +51,7 @@ public class DisplayController {
 
         displayService.saveDisplay(display);
 
-        return "redirect:/";
+        return "redirect:/phone/create";
     }
 
     @GetMapping("/update/{id}")
