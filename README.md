@@ -27,3 +27,7 @@ java -jar .\build\libs\PhoneShop-0.0.1-SNAPSHOT.jar
 
 ## База данных
 ![erd_db.png](sql%2Ferd_db.png)
+
+## Тестирование
+Тесты выполняются НЕ на отдельной базе данных, поэтому рекомендуется перед тестами выполнить 
+скрипты [create_table.sql](sql%2Fcreate_table.sql) и [insert.sql](sql%2Finsert.sql)
