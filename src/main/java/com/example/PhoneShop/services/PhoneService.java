@@ -50,4 +50,8 @@ public class PhoneService {
         phoneRepository.save(phone);
     }
 
+    public Iterable<Phone> getByTypeMatrix(String typeMatrix) {
+        return phoneRepository.findByDisplay_TypeMatrix(typeMatrix);
+    }
+
 }

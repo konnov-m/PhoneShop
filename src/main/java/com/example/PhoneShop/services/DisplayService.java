@@ -6,7 +6,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @Slf4j
@@ -37,6 +39,17 @@ public class DisplayService {
 
     public void saveDisplay(Display display) {
         displayRepository.save(display);
+    }
+
+    public Set<String> getAllTypeMatrix() {
+        Set<String> set = new HashSet<>();
+
+        Iterable<Display> displays = displayRepository.findAll();
+
+        for (Display d: displays) {
+            set.add(d.getTypeMatrix());
+        }
+        return set;
     }
 
 }
