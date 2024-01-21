@@ -1,8 +1,10 @@
 package com.example.PhoneShop.services;
 
 import com.example.PhoneShop.models.Company;
+import com.example.PhoneShop.models.Display;
 import com.example.PhoneShop.models.Phone;
 import com.example.PhoneShop.repository.CompanyRepository;
+import com.example.PhoneShop.repository.DisplayRepository;
 import com.example.PhoneShop.repository.PhoneRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,19 +25,26 @@ class PhoneServiceTest {
     @Autowired
     private CompanyRepository companyRepository;
 
+    @Autowired
+    private DisplayRepository displayRepository;
+
     private PhoneService phoneService;
 
     private CompanyService companyService;
+
+    private DisplayService displayService;
 
 
     @BeforeEach
     void beforeEach() {
         phoneService = new PhoneService();
         companyService = new CompanyService();
+        displayService = new DisplayService();
 
         phoneService.setPhoneRepository(phoneRepository);
         companyService.setPhoneService(phoneService);
         companyService.setCompanyRepository(companyRepository);
+        displayService.setDisplayRepository(displayRepository);
     }
 
 
@@ -50,6 +59,7 @@ class PhoneServiceTest {
         phone.setName(name);
         phone.setCompany(company);
         phone.setDescription("Iphone 14 description");
+        phone.setDisplay(displayService.getDisplayById(1L));
 
 
         phoneService.savePhone(phone);
@@ -71,6 +81,8 @@ class PhoneServiceTest {
         phone.setName(name);
         phone.setCompany(company);
         phone.setDescription("Iphone 14 description");
+        phone.setDisplay(new Display());
+        phone.setDisplay(displayService.getDisplayById(1L));
 
 
         phoneService.savePhone(phone);
