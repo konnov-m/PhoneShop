@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 
 
 /**
- * Класс телефон. Свойства: <b>id</b>, <b>name</b>, <b>description</b>, <b>company</b>.
+ * Класс телефон. Свойства: <b>id</b>, <b>name</b>, <b>description</b>, <b>company</b>, <b>display</b>.
  * @author Коннов Михаил
  */
 @Entity
