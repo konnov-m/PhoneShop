@@ -1,5 +1,7 @@
 package com.example.PhoneShop.services;
 
+import com.example.PhoneShop.models.Company;
+import com.example.PhoneShop.models.Display;
 import com.example.PhoneShop.models.Phone;
 import com.example.PhoneShop.repository.PhoneRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,10 @@ import java.util.Optional;
  * <br>Получить экземпляр {@link PhoneService#getPhoneById(Long)}</br>
  * <br>Получить все экземпляры {@link PhoneService#getAllPhones()}</br>
  * <br>Получить экземпляр по {@link Phone#getName()}. Функция {@link PhoneService#getPhoneByName(String)}</br>
+ * <br>Сохранить {@link PhoneService#savePhone(Phone)}</br>
+ * <br>Получить по {@link Display#getTypeMatrix()}. Функция {@link PhoneService#getByTypeMatrix(String)}</br>
+ * <br>Получить список по {@link Company#getTitle()}. Функция {@link PhoneService#getByCompanyTitle}</br>
+ * <br>Получить список по {@link Display#getRate()}. Функция {@link PhoneService#getByDisplayRate}</br>
  */
 @Service
 @Slf4j
@@ -60,6 +66,12 @@ public class PhoneService {
         return phoneRepository.findByCompany_Title(title);
     }
 
+    /**
+     * Метод для сортировки списка телефонов по компании
+     * @param phones список телефонов, который нужно отсортировать
+     * @param title название компании, телефоны которой нужно оставить.
+     * @return Iterable
+     */
     public Iterable<Phone> getByCompanyTitle(Iterable<Phone> phones, String title) {
         List<Phone> needPhones = new ArrayList<>();
 
@@ -72,6 +84,12 @@ public class PhoneService {
         return needPhones;
     }
 
+    /**
+     * Метод для сортировки списка телефонов по компании
+     * @param phones список телефонов, который нужно отсортировать
+     * @param rate Частато экрана, которая должна быть у телефонов.
+     * @return Iterable&lt;{@link Phone}&gt;
+     */
     public Iterable<Phone> getByDisplayRate(Iterable<Phone> phones, int rate) {
         List<Phone> needPhones = new ArrayList<>();
 

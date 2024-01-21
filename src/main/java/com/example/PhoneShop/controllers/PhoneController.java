@@ -71,6 +71,12 @@ public class PhoneController {
         return "phone/get";
     }
 
+    /**
+     *
+     * @param typeMatrix Поиск по типу матрицы
+     * @param company Поиск по названию компании
+     * @param rate Поиск по частоте экрана
+     */
     @GetMapping({"", "/"})
     public String getAll(@RequestParam(value = "type_matrix", required = false) String typeMatrix,
                          @RequestParam(value = "company", required = false) String company,

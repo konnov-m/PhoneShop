@@ -13,6 +13,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Objects;
 
+/**
+ * Контроллер для класса {@link Display}.
+ * <br>Получение страницы с созданием экземпляра {@link DisplayController#createGet} и
+ *  приём POST запроса {@link DisplayController#createPost}</br>
+ * <br>Получение страницы с обновлением экземпляра {@link DisplayController#updateGet} и
+ *  приём POST запроса {@link DisplayController#updatePost}</br>
+ */
 @Controller
 @RequestMapping("/display")
 @Slf4j

@@ -19,7 +19,7 @@ import java.util.Set;
  * <br>Получить все экземпляры {@link CompanyService#getAllCompanies()}</br>
  * <br>Получить экземпляр по полю {@link Company#getTitle()}. Функция {@link CompanyService#getCompanyByTitle(String)} </br>
  * <br>Сохранить и обновить экземпляр. {@link CompanyService#saveCompany(Company)}</br>
- * <br></br>
+ * <br>Получтиь множество всех названий компаний. {@link CompanyService#getAllTitles()}</br>
  */
 @Service
 @Slf4j
@@ -74,6 +74,10 @@ public class CompanyService {
         companyRepository.save(company);
     }
 
+    /**
+     * Получить множество всех названий компаний
+     * @return Set&lt;String&gt;
+     */
     public Set<String> getAllTitles() {
         Set<String> set = new HashSet<>();
 

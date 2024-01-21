@@ -1,5 +1,6 @@
 package com.example.PhoneShop.services;
 
+import com.example.PhoneShop.models.Company;
 import com.example.PhoneShop.models.Display;
 import com.example.PhoneShop.repository.DisplayRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +11,15 @@ import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 
+/**
+ * <p>Сервис по работе с {@link Display}.<p/>
+ * <br>Получить все экземпляры {@link DisplayService#getAllDisplays}</br>
+ * <br>Получить по {@link Display#getId()}. Функция {@link DisplayService#getDisplayById}</br>
+ * <br>Получить по {@link Display#getName()}. Функция {@link DisplayService#getDisplayByName}</br>
+ * <br>Сохранить и обновить {@link DisplayService#saveDisplay}</br>
+ * <br>Получить все существующие {@link Display#getTypeMatrix()} ()}. Функция {@link DisplayService#getAllTypeMatrix}</br>
+ * <br>Получить все существующие {@link Display#getRate()} ()}. Функция {@link DisplayService#getAllRates}</br>
+ */
 @Service
 @Slf4j
 public class DisplayService {
