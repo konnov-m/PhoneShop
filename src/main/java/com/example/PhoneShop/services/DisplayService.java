@@ -1,6 +1,5 @@
 package com.example.PhoneShop.services;
 
-import com.example.PhoneShop.models.Company;
 import com.example.PhoneShop.models.Display;
 import com.example.PhoneShop.repository.DisplayRepository;
 import lombok.extern.slf4j.Slf4j;

@@ -37,7 +37,7 @@ public class CompanyController {
         this.companyService = companyService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping({"/{id}", "/{id}/"})
     public String getCompany(@PathVariable("id") Long id, Model model) {
         log.info("Get company with id=" + id);
         Company company = companyService.getCompanyById(id);
@@ -61,14 +61,14 @@ public class CompanyController {
         return "company/getAll";
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping({"/delete/{id}", "/delete/{id}/"})
     public String delete(@PathVariable("id") Long id) {
         companyService.deleteCompanyById(id);
 
         return "redirect:/company";
     }
 
-    @GetMapping("/create")
+    @GetMapping({"/create", "/create/"})
     public String createGet(@RequestParam(value = "titleExist", required = false) String titleExist,
             @ModelAttribute("company") Company company,
             Model model) {
@@ -77,7 +77,7 @@ public class CompanyController {
         return "company/create";
     }
 
-    @PostMapping("/create")
+    @PostMapping({"/create", "/create/"})
     public String createPost(@ModelAttribute("company") @Valid Company company, BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
 
@@ -96,7 +96,7 @@ public class CompanyController {
         return "redirect:/company";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping({"/update/{id}", "/update/{id}/"})
     public String updateGet(@RequestParam(value = "titleExist", required = false) String titleExist,
                             @ModelAttribute("company") Company company, @PathVariable("id") Long id,
                             Model model) {
@@ -111,7 +111,7 @@ public class CompanyController {
     }
 
 
-    @PostMapping("/update/{id}")
+    @PostMapping({"/update/{id}", "/update/{id}/"})
     public String updatePost(@ModelAttribute("company") @Valid Company company, BindingResult bindingResult,
                              @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 

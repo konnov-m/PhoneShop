@@ -32,7 +32,7 @@ public class DisplayController {
         this.displayService = displayService;
     }
 
-    @GetMapping("/create")
+    @GetMapping({"/create", "/create/"})
     public String createGet(@RequestParam(value = "nameExist", required = false) String nameExist,
                             @ModelAttribute("display") Display display, Model model) {
 
@@ -41,7 +41,7 @@ public class DisplayController {
         return "display/create";
     }
 
-    @PostMapping("/create")
+    @PostMapping({"/create", "/create/"})
     public String createPost (@ModelAttribute("display") @Valid Display display,
                               BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
@@ -61,7 +61,7 @@ public class DisplayController {
         return "redirect:/phone/create";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping({"/update/{id}", "/update/{id}/"})
     public String updateGet(@RequestParam(value = "nameExist", required = false) String nameExist,
                             @ModelAttribute("display") Display display, @PathVariable("id") Long id,
                             Model model) {
@@ -80,7 +80,7 @@ public class DisplayController {
         return "display/update";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping({"/update/{id}", "/update/{id}/"})
     public String updatePost(@ModelAttribute("display") @Valid Display display, BindingResult bindingResult,
                              @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 

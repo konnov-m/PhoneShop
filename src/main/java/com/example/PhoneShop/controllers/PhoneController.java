@@ -57,7 +57,7 @@ public class PhoneController {
         this.displayService = displayService;
     }
 
-    @GetMapping("/{id}")
+    @GetMapping({"/{id}","/{id}/"})
     public String getPhone(@PathVariable("id") Long id, Model model) {
         log.info("Get phone with id=" + id);
         Phone phone = phoneService.getPhoneById(id);
@@ -109,14 +109,14 @@ public class PhoneController {
         return "phone/getAll";
     }
 
-    @PostMapping("/delete/{id}")
+    @PostMapping({"/delete/{id}", "/delete/{id}/"})
     public String delete(@PathVariable("id") Long id) {
         phoneService.deletePhoneById(id);
 
         return "redirect:/phone";
     }
 
-    @GetMapping("/create")
+    @GetMapping({"/create", "/create/"})
     public String createGet(@RequestParam(value = "nameExist", required = false) String nameExist,
                             @ModelAttribute("phone") Phone phone, Model model) {
         log.info("createGet(). Get phone = " + phone);
@@ -129,7 +129,7 @@ public class PhoneController {
     }
 
 
-    @PostMapping("/create")
+    @PostMapping({"/create", "/create/"})
     public String createPost(@ModelAttribute("phone") @Valid Phone phone,
                              BindingResult bindingResult,
                              RedirectAttributes redirectAttributes) {
@@ -150,7 +150,7 @@ public class PhoneController {
         return "redirect:/phone";
     }
 
-    @GetMapping("/update/{id}")
+    @GetMapping({"/update/{id}", "/update/{id}/"})
     public String updateGet(@RequestParam(value = "nameExist", required = false) String nameExist,
                             @ModelAttribute("phone") Phone phone, @PathVariable("id") Long id,
                             Model model) {
@@ -185,7 +185,7 @@ public class PhoneController {
         return "phone/update";
     }
 
-    @PostMapping("/update/{id}")
+    @PostMapping({"/update/{id}", "/update/{id}/"})
     public String updatePost(@ModelAttribute("phone") @Valid Phone phone, BindingResult bindingResult,
                              @PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 
