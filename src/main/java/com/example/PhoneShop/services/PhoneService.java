@@ -72,6 +72,7 @@ public class PhoneService {
      */
     public Iterable<Phone> getByCompanyTitle(Iterable<Phone> phones, String title) {
         log.info("getByCompanyTitle() with parameter title = " + title);
+        log.debug("getByCompanyTitle() with parameter phones = " + phones);
         List<Phone> needPhones = new ArrayList<>();
 
         for (Phone phone: phones) {
@@ -91,6 +92,7 @@ public class PhoneService {
      */
     public Iterable<Phone> getByDisplayRate(Iterable<Phone> phones, int rate) {
         log.info("getByDisplayRate() with parameter rate = " + rate);
+        log.debug("getByDisplayRate() with parameter phones = " + phones);
         List<Phone> needPhones = new ArrayList<>();
 
         for (Phone phone: phones) {
