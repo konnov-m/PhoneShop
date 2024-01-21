@@ -12,4 +12,6 @@ public interface PhoneRepository extends CrudRepository<Phone, Long> {
     Optional<Phone> findByCompany(Company company);
 
     Iterable<Phone> findByDisplay_TypeMatrix(String typeMatrix);
+
+    Iterable<Phone> findByCompany_Title(String title);
 }

@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -52,6 +54,22 @@ public class PhoneService {
 
     public Iterable<Phone> getByTypeMatrix(String typeMatrix) {
         return phoneRepository.findByDisplay_TypeMatrix(typeMatrix);
+    }
+
+    public Iterable<Phone> getByTypeCompanyTitle(String title) {
+        return phoneRepository.findByCompany_Title(title);
+    }
+
+    public Iterable<Phone> getByTypeCompanyTitle(Iterable<Phone> phones, String title) {
+        List<Phone> needPhones = new ArrayList<>();
+
+        for (Phone phone: phones) {
+            if (phone.getCompany().getTitle().equals(title)) {
+                needPhones.add(phone);
+            }
+        }
+
+        return needPhones;
     }
 
 }

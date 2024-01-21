@@ -7,7 +7,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 
 /**
@@ -70,6 +72,18 @@ public class CompanyService {
 
     public void saveCompany(Company company) {
         companyRepository.save(company);
+    }
+
+    public Set<String> getAllTitles() {
+        Set<String> set = new HashSet<>();
+
+        Iterable<Company> companies = companyRepository.findAll();
+
+        for (Company company: companies) {
+            set.add(company.getTitle());
+        }
+
+        return set;
     }
 
 }
