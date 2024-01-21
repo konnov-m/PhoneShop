@@ -35,18 +35,21 @@ public class DisplayService {
     }
 
     public Display getDisplayById(Long id) {
+        log.info("getDisplayById() with parameter id = " + id);
         Optional<Display> display = displayRepository.findById(id);
 
         return display.orElse(null);
     }
 
     public Display getDisplayByName(String name) {
+        log.info("getDisplayByName() with parameter name = " + name);
         Optional<Display> display = displayRepository.findByName(name);
 
         return display.orElse(null);
     }
 
     public void saveDisplay(Display display) {
+        log.info("saveDisplay() with parameter display = " + display);
         displayRepository.save(display);
     }
 

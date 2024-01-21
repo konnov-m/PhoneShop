@@ -40,6 +40,7 @@ public class CompanyService {
     }
 
     public void deleteCompanyById(Long id) {
+        log.info("deleteCompanyById() with parameter id = " + id);
         Optional<Company> company = companyRepository.findById(id);
 
         if (company.isEmpty()) {
@@ -55,6 +56,7 @@ public class CompanyService {
     }
 
     public Company getCompanyById(Long id) throws IllegalArgumentException {
+        log.info("getCompanyById() with parameter id = " + id);
         Optional<Company> company = companyRepository.findById(id);
 
         return company.orElse(null);
@@ -65,12 +67,14 @@ public class CompanyService {
     }
 
     public Company getCompanyByTitle(String title) {
+        log.info("getCompanyByTitle() with parameter title = " + title);
         Optional<Company> company = companyRepository.findByTitle(title);
 
         return company.orElse(null);
     }
 
     public void saveCompany(Company company) {
+        log.info("saveCompany() with parameter company = " + company);
         companyRepository.save(company);
     }
 

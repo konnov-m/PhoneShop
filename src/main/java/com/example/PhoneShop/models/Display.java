@@ -5,7 +5,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * Класс дисплей. Свойства: <b>id</b>, <b>name</b>, <b>diagonal</b>, <b>resolutionX</b>, <b>resolutionY</b>
@@ -18,7 +17,6 @@ import lombok.extern.slf4j.Slf4j;
 @Setter
 @ToString
 @EqualsAndHashCode
-@Slf4j
 public class Display {
 
     @Id
