@@ -89,8 +89,15 @@ public class PhoneController {
             phones = phoneService.getByCompanyTitle(phones, company);
         }
 
+        if (rate != null && !rate.isEmpty()) {
+            log.info("Rate = " + rate);
+            phones = phoneService.getByDisplayRate(phones, Integer.parseInt(rate));
+        }
+
         model.addAttribute("matrixs", displayService.getAllTypeMatrix());
+        model.addAttribute("rates", displayService.getAllRates());
         model.addAttribute("companyTitles", companyService.getAllTitles());
+
         model.addAttribute("phones", phones);
 
         return "phone/getAll";

@@ -72,4 +72,16 @@ public class PhoneService {
         return needPhones;
     }
 
+    public Iterable<Phone> getByDisplayRate(Iterable<Phone> phones, int rate) {
+        List<Phone> needPhones = new ArrayList<>();
+
+        for (Phone phone: phones) {
+            if (phone.getDisplay().getRate() == rate) {
+                needPhones.add(phone);
+            }
+        }
+
+        return needPhones;
+    }
+
 }

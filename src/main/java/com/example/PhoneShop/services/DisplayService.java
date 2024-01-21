@@ -52,4 +52,15 @@ public class DisplayService {
         return set;
     }
 
+    public Set<Integer> getAllRates() {
+        Set<Integer> set = new HashSet<>();
+
+        Iterable<Display> displays = displayRepository.findAll();
+
+        for (Display d: displays) {
+            set.add(d.getRate());
+        }
+        return set;
+    }
+
 }
