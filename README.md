@@ -24,3 +24,6 @@ CREATE DATABASE phone_shop;
 java -jar .\build\libs\PhoneShop-0.0.1-SNAPSHOT.jar
 ```
 И переходим по ссылке http://localhost:8081/
+
+## База данных
+![erd_db.png](sql%2Ferd_db.png)
