@@ -73,7 +73,8 @@ public class PhoneController {
 
     @GetMapping({"", "/"})
     public String getAll(@RequestParam(value = "type_matrix", required = false) String typeMatrix,
-                         @RequestParam(value = "company", required = false) String company, Model model) {
+                         @RequestParam(value = "company", required = false) String company,
+                         @RequestParam(value = "rate", required = false) String rate, Model model) {
         log.info("Get all phones");
         Iterable<Phone> phones;
         if (typeMatrix != null && !typeMatrix.isEmpty()) {
@@ -85,7 +86,7 @@ public class PhoneController {
 
         if (company != null && !company.isEmpty()) {
             log.info("Company name " + company);
-            phones = phoneService.getByTypeCompanyTitle(phones, company);
+            phones = phoneService.getByCompanyTitle(phones, company);
         }
 
         model.addAttribute("matrixs", displayService.getAllTypeMatrix());

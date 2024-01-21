@@ -56,11 +56,11 @@ public class PhoneService {
         return phoneRepository.findByDisplay_TypeMatrix(typeMatrix);
     }
 
-    public Iterable<Phone> getByTypeCompanyTitle(String title) {
+    public Iterable<Phone> getByCompanyTitle(String title) {
         return phoneRepository.findByCompany_Title(title);
     }
 
-    public Iterable<Phone> getByTypeCompanyTitle(Iterable<Phone> phones, String title) {
+    public Iterable<Phone> getByCompanyTitle(Iterable<Phone> phones, String title) {
         List<Phone> needPhones = new ArrayList<>();
 
         for (Phone phone: phones) {
