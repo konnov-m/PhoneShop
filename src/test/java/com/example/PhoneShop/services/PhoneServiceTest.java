@@ -69,6 +69,7 @@ class PhoneServiceTest {
         assertEquals(savedPhone.getName(), phone.getName());
         assertEquals(savedPhone.getCompany(), phone.getCompany());
         assertEquals(savedPhone.getDescription(), phone.getDescription());
+        assertEquals(savedPhone.getDisplay(), displayService.getDisplayById(1L));
     }
 
     @Test
@@ -92,6 +93,7 @@ class PhoneServiceTest {
         assertNotEquals(savedPhone.getName(), name.toLowerCase()); // Lower case
         assertEquals(savedPhone.getCompany(), phone.getCompany());
         assertEquals(savedPhone.getDescription(), phone.getDescription());
+        assertEquals(savedPhone.getDisplay(), displayService.getDisplayById(1L));
     }
 
     @Test
@@ -144,6 +146,35 @@ class PhoneServiceTest {
 
 
         assertEquals(phoneRepository.findByName("Pixel 7").get().getName(), name);
-
     }
+
+
+    @Test
+    void getIphone15ByName() {
+        String name = "IPhone 15";
+
+        assertEquals(phoneService.getPhoneByName(name), phoneRepository.findByName(name).get());
+    }
+
+    @Test
+    void getPixel8ByName() {
+        String name = "Pixel 8";
+
+        assertEquals(phoneService.getPhoneByName(name), phoneRepository.findByName(name).get());
+    }
+
+    @Test
+    void getIphone15ById() {
+        Long id = 1L;
+
+        assertEquals(phoneService.getPhoneById(id), phoneRepository.findById(id).get());
+    }
+
+    @Test
+    void getPixel8ById() {
+        Long id = 2L;
+
+        assertEquals(phoneService.getPhoneById(id), phoneRepository.findById(id).get());
+    }
+
 }
